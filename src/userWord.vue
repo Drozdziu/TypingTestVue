@@ -1,10 +1,13 @@
 <script lang="ts">
 export default {
   name: 'userWordComponent',
-      data() {
-        return {
-            word: ""
-        }
+    props:{
+      stopTyping: Boolean
+    },
+    data() {
+      return {
+        word: ""
+      }
     },
     methods:{
       finishTyping(){
@@ -25,7 +28,8 @@ export default {
 </script>
 
 <template>
-  <input v-model="word" autofocus></input>
+  <input v-if="!stopTyping" v-model="word" autofocus></input>
+  <p v-else>Test is over!</p>
 </template>
 
 <style scoped>
@@ -33,10 +37,15 @@ input{
   margin-top: 30px;
   background-color: white;
   border: 0;
+  border-radius: 10px;
   color: black;
   font-size: 30px;
+  margin: 10px;
+  padding: 5px;
 }
 p{
   color: white;
+  margin: 5px;
+  font-size: 30px;
 }
 </style>

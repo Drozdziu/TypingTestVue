@@ -15,11 +15,6 @@ export default {
       default: false
     }
   },
-  data() {
-    return {
-      lockBg: false,
-    }
-  },
   methods: {
     boxColor(color) {
       this.$emit('boxColor', color);
@@ -29,11 +24,10 @@ export default {
     isMatch() {
       if (this.isActive) {
         if (this.word === this.checkWord) {
-          this.lockBg = true;
-          return "green";
+          return "#21FA91";
         }
         else {
-          return "red";
+          return "#FC2111";
         }
       }
     }
@@ -52,7 +46,9 @@ export default {
 
 <style scoped>
 p {
-  margin: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 2px;
   color: black;
   font-size: 30px;
 }
