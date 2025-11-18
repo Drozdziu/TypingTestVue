@@ -2,7 +2,7 @@
 export default {
   name: 'timerComponent',
   props: {
-    startTimer:{
+    startTimer: {
       type: Boolean,
       default: false
     }
@@ -10,12 +10,12 @@ export default {
   data() {
     return {
       minutes: 0,
-      seconds: 10
+      seconds: 30
     }
   },
-  mounted() {
-    setInterval(() => {
-      if (this.startTimer) {
+  methods: {
+    start() {
+      setInterval(() => {
         if (this.seconds > 0) this.seconds--;
         else {
           if (this.minutes > 0) {
@@ -26,8 +26,13 @@ export default {
         if (this.seconds == 0 && this.minutes == 0) {
           this.$emit('stopTimer');
         }
-      }
-    }, 1000)
+      }, 1000)
+    }
+  },
+  watch: {
+    startTimer() {
+      this.start();
+    }
   }
 }
 

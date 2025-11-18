@@ -14,7 +14,6 @@ export default {
   name: 'App',
   data() {
     return {
-      text: "",
       checkWord: "",
       index: 0,
       stopTyping: false,
@@ -28,7 +27,7 @@ export default {
     },
     changeIndex(){ this.index++; },
     zeroIndex(){ this.index = 0; },
-    stopTimer(){ this.stopTyping = true }
+    stopTimer(){ this.stopTyping = true; }
   }
 }
 </script>

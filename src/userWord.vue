@@ -28,7 +28,7 @@ export default {
 </script>
 
 <template>
-  <input v-if="!stopTyping" v-model="word" autofocus></input>
+  <input v-if="!stopTyping" v-model="word" autofocus />
   <p v-else>Test is over!</p>
 </template>
 
@@ -45,7 +45,7 @@ input{
 }
 p{
   color: white;
-  margin: 5px;
+  margin: 10px;
   font-size: 30px;
 }
 </style>
