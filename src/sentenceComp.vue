@@ -9,7 +9,7 @@ export default {
   props: {
     checkWord: {
       type: String,
-      default: ''
+      default: ""
     },
     index: {
       type: Number,
@@ -27,9 +27,11 @@ export default {
   methods: {
     boxColor(color) {
       this.colorBoxes[this.index] = color;
+      if(color == "#21FA91") this.$emit('wordCounter');
+      
     },
-    fillArr() {
-      for (let i = 0; i < 30; i++) {
+    fillArr(_i) {
+      for (let i = _i; i < _i + 30; i++) {
         let randIndex = Math.round(Math.random() * this.wordsHelp.length -1);
         this.words[i] = this.wordsHelp[randIndex];
         this.wordsHelp.splice(randIndex, 1);
@@ -45,11 +47,12 @@ export default {
         for (let i in this.colorBoxes) this.colorBoxes[i] = "white";
         for (let i in this.activeWords) this.activeWords[i] = false;
         this.$emit('zeroIndex');
+        this.fillArr(this.words.length);
       }
     },
   },
   mounted() {
-    this.fillArr();
+    this.fillArr(0);
   }
 }
 </script>

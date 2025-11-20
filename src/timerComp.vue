@@ -26,7 +26,7 @@ export default {
         if (this.seconds == 0 && this.minutes == 0) {
           this.$emit('stopTimer');
         }
-      }, 1000)
+      }, 1000);
     }
   },
   watch: {

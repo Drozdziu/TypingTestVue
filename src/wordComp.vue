@@ -30,6 +30,7 @@ export default {
           return "#FC2111";
         }
       }
+      else return "";
     }
   },
   watch: {

@@ -15,29 +15,46 @@ export default {
   data() {
     return {
       checkWord: "",
+      signCounter: 0,
       index: 0,
       stopTyping: false,
-      startTyping: false
+      startTyping: false,
+      goodWords: 0,
+      wordCount: 0,
+      accuracyPercent: 0
     }
   },
   methods: {
-    sendWord(word){ 
+    sendWord(word, counter){ 
       this.checkWord = word; 
+      this.signCounter += counter;
       this.startTyping = true;
     },
-    changeIndex(){ this.index++; },
+    changeIndex(){ 
+      this.index++; 
+      this.wordCount++; 
+      console.log("count " + this.wordCount)
+      console.log("good " + this.goodWords)
+    },
     zeroIndex(){ this.index = 0; },
-    stopTimer(){ this.stopTyping = true; }
+    stopTimer(){ 
+      this.stopTyping = true; 
+      this.accuracyPercent = (this.goodWords / this.wordCount) * 100;
+    },
+    goodCounter(){ 
+      this.goodWords++;
+      
+    }
   }
 }
 </script>
 
 <template>
   <div id="container">
-    <sentence-comp :checkWord="checkWord" :index="index" @zeroIndex="zeroIndex"/>
+    <sentence-comp :checkWord="checkWord" :index="index" @zeroIndex="zeroIndex" @wordCounter="goodCounter"/>
     <div id="userUI">
-      <user-word-component @sendWord="sendWord" @changeIndex="changeIndex" :stopTyping="stopTyping"/>
-      <timer-comp @stopTimer="stopTimer" :startTimer="startTyping"/>
+      <user-word-component @sendWord="sendWord" @changeIndex="changeIndex" :stopTyping="stopTyping" :signCounter="signCounter" :accuracy="accuracyPercent"/>
+      <timer-comp @stopTimer="stopTimer" :startTimer="startTyping" />
     </div>
   </div>
 
