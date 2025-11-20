@@ -9,8 +9,8 @@ export default {
   },
   data() {
     return {
-      minutes: 0,
-      seconds: 30
+      minutes: 1,
+      seconds: 0
     }
   },
   methods: {

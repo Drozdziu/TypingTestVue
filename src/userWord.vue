@@ -3,12 +3,12 @@ export default {
   name: 'userWordComponent',
   props: {
     stopTyping: Boolean,
-    signCounter: Number,
     accuracy: Number
   },
   data() {
     return {
       word: "",
+      signsCount: 0,
       wpn: 0
     }
   },
@@ -19,15 +19,16 @@ export default {
   },
   watch: {
     word() {
-      this.$emit('sendWord', this.word, this.word.length);
+      this.$emit('sendWord', this.word);
       if (this.word.includes(' ')) {
+        this.signsCount += this.word.length-1;
         this.word = "";
         this.finishTyping();
       }
     },
     stopTyping(){
       if(this.stopTyping){
-        this.wpn = this.signCounter / 5;
+        this.wpn = this.signsCount / 5;
       }
     }
   }
