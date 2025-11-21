@@ -39,8 +39,9 @@ export default {
   <input v-if="!stopTyping" v-model="word" autofocus />
   <div v-else>
     <p> Test is over! </p>
-    <p> Your speed: {{ this.wpn }} </p>
+    <p> Your speed: {{ this.wpn }} WPN </p>
     <p> Your accuracy: {{ this.accuracy.toFixed(0) }} % </p>
+    <!-- <button>Restart test</button> -->
   </div>
 </template>
 

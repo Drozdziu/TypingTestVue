@@ -27,22 +27,28 @@ export default {
   methods: {
     boxColor(color) {
       this.colorBoxes[this.index] = color;
-      if(color == "#21FA91") this.$emit('wordCounter');
+      if(this.colorBoxes[this.index-1] =='#CC5E5E') this.colorBoxes[this.index-1] = '#FC2111';
       
+      if (color == "#21FA91") this.$emit('wordCounter');
+
     },
     fillArr(_i) {
-      for (let i = _i; i < _i + 30; i++) {
-        let randIndex = Math.round(Math.random() * this.wordsHelp.length -1);
+      for (let i = _i; i < _i + 10; i++) {
+        let randIndex = Math.round(Math.random() * this.wordsHelp.length - 1);
         this.words[i] = this.wordsHelp[randIndex];
         this.wordsHelp.splice(randIndex, 1);
       }
+    },
+    selectedColor(color){
+      if(color == '#CC5E5E') return '#CC5E5E';
+      else return '#999';
     }
   },
   watch: {
     index() {
       this.activeWords[this.index - 1] = false;
       this.activeWords[this.index] = true;
-      if(this.index % 5 == 0 && this.index != 0){
+      if (this.index % 5 == 0 && this.index != 0) {
         this.words.splice(0, 5);
         for (let i in this.colorBoxes) this.colorBoxes[i] = "white";
         for (let i in this.activeWords) this.activeWords[i] = false;
@@ -60,9 +66,9 @@ export default {
 <template>
   <div id="box">
     <div class="row">
-      <WordComp :style="{ backgroundColor: activeWords[i] ? '#999' : colorBoxes[i] }" :word="word"
-        :isActive="activeWords[i]" :check-word="checkWord" v-for="(word, i) in words" class="wordBox"
-        @boxColor="boxColor" />
+      <WordComp :style="{ backgroundColor: activeWords[i] ? selectedColor(colorBoxes[i]) : colorBoxes[i] }" class="wordBox col-12"
+        :isActive="activeWords[i]" :check-word="checkWord" :word="word" @boxColor="boxColor"
+        v-for="(word, i) in words" />
     </div>
   </div>
 </template>
@@ -71,6 +77,7 @@ export default {
 #box {
   min-height: 100px;
   max-width: 600px;
+  min-width: 450px;
   background-color: white;
   border-radius: 10px;
   color: #000;

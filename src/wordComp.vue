@@ -15,27 +15,28 @@ export default {
       default: false
     }
   },
-  methods: {
-    boxColor(color) {
-      this.$emit('boxColor', color);
-    }
-  },
   computed: {
     isMatch() {
       if (this.isActive) {
-        if (this.word === this.checkWord) {
-          return "#21FA91";
+        if (this.word.length == this.checkWord.length) {
+          if (this.word === this.checkWord) return "#21FA91";
+          else return "#CC5E5E";
         }
         else {
+          for (let i = 0; i < this.checkWord.length; i++) {
+            if (this.word[i] != this.checkWord[i]) {
+              return "#CC5E5E";
+            }
+          }
           return "#FC2111";
         }
       }
-      else return "";
+      else return "#FFF";
     }
   },
   watch: {
     isMatch(color) {
-      this.boxColor(color);
+      this.$emit('boxColor', color);
     }
   },
 }
@@ -51,6 +52,6 @@ p {
   margin: 5px;
   padding: 2px;
   color: black;
-  font-size: 30px;
+  font-size: 100%;
 }
 </style>
