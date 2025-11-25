@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     start() {
-      setInterval(() => {
+      const loop = setInterval(() => {
         if (this.seconds > 0) this.seconds--;
         else {
           if (this.minutes > 0) {
@@ -25,13 +25,18 @@ export default {
         }
         if (this.seconds == 0 && this.minutes == 0) {
           this.$emit('stopTimer');
+          clearInterval(loop);
         }
       }, 1000);
     }
   },
   watch: {
     startTimer() {
-      this.start();
+      if(this.startTimer) this.start();
+      else{
+        this.minutes = 1;
+        this.seconds = 0;
+      }
     }
   }
 }

@@ -15,6 +15,10 @@ export default {
   methods: {
     finishTyping() {
       this.$emit("changeIndex", 1);
+    },
+    restartTest(){
+      this.signsCount = 0;
+      this.$emit("restartTest");
     }
   },
   watch: {
@@ -29,6 +33,7 @@ export default {
     stopTyping(){
       if(this.stopTyping){
         this.wpn = this.signsCount / 5;
+        this.word = '';
       }
     }
   }
@@ -41,7 +46,7 @@ export default {
     <p> Test is over! </p>
     <p> Your speed: {{ this.wpn }} WPN </p>
     <p> Your accuracy: {{ this.accuracy.toFixed(0) }} % </p>
-    <!-- <button>Restart test</button> -->
+    <button @click="restartTest" type="button" class="btn btn-success">Restart</button>
   </div>
 </template>
 
@@ -56,7 +61,17 @@ input {
   margin: 10px;
   padding: 5px;
 }
-
+button{
+  /* border: 5px solid black; */
+  border-radius: 10px;
+  font-size: 30px;
+  transition-duration: 200ms;
+}
+button:hover{
+  cursor: pointer;
+  background-color: black;
+  transition-duration: 200ms;
+}
 p {
   color: white;
   margin: 10px;

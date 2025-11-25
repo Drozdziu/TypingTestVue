@@ -14,6 +14,10 @@ export default {
     index: {
       type: Number,
       default: 0
+    },
+    reset:{
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -27,10 +31,8 @@ export default {
   methods: {
     boxColor(color) {
       this.colorBoxes[this.index] = color;
-      if(this.colorBoxes[this.index-1] =='#CC5E5E') this.colorBoxes[this.index-1] = '#FC2111';
-      
+      if(this.colorBoxes[this.index-1] == '#CC5E5E') this.colorBoxes[this.index-1] = '#FC2111';
       if (color == "#21FA91") this.$emit('wordCounter');
-
     },
     fillArr(_i) {
       for (let i = _i; i < _i + 10; i++) {
@@ -40,8 +42,7 @@ export default {
       }
     },
     selectedColor(color){
-      if(color == '#CC5E5E') return '#CC5E5E';
-      else return '#999';
+      return color == '#CC5E5E' ? '#CC5E5E' : '#999';
     }
   },
   watch: {
@@ -56,6 +57,16 @@ export default {
         this.fillArr(this.words.length);
       }
     },
+    reset(){
+      if(this.reset){
+        this.words.splice(0, this.words.length);
+        this.colorBoxes.splice(0, this.colorBoxes.length);
+        this.activeWords.splice(0, this.activeWords.length);
+        this.activeWords[0] = true;
+        this.wordsHelp = wordsBase;
+        this.fillArr(0);
+      }
+    }
   },
   mounted() {
     this.fillArr(0);
