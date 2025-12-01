@@ -65,7 +65,9 @@ button{
   /* border: 5px solid black; */
   border-radius: 10px;
   font-size: 30px;
+  background-color: #21FA91;
   transition-duration: 200ms;
+  color: #000;
 }
 button:hover{
   cursor: pointer;
@@ -73,8 +75,15 @@ button:hover{
   transition-duration: 200ms;
 }
 p {
-  color: white;
+  /* color: white; */
   margin: 10px;
   font-size: 30px;
+}
+div{
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background-color: #FFF;
 }
 </style>

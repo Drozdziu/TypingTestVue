@@ -3,13 +3,15 @@ import SentenceComp from './sentenceComp.vue';
 import UserWordComponent from './userWord.vue';
 import WordComp from './wordComp.vue';
 import timerComp from './timerComp.vue';
+import HeaderComp from './headerComp.vue';
 
 export default {
   components: {
     UserWordComponent,
     SentenceComp,
     WordComp,
-    timerComp
+    timerComp,
+    HeaderComp
   },
   name: 'App',
   data() {
@@ -53,6 +55,7 @@ export default {
 </script>
 
 <template>
+  <HeaderComp/>
   <div id="container">
     <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" @zeroIndex="zeroIndex" @wordCounter="goodCounter"/>
     <div id="userUI">

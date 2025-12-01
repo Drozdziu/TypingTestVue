@@ -10,7 +10,8 @@ export default {
   data() {
     return {
       minutes: 1,
-      seconds: 0
+      seconds: 0,
+      showTimer: true
     }
   },
   methods: {
@@ -25,6 +26,7 @@ export default {
         }
         if (this.seconds == 0 && this.minutes == 0) {
           this.$emit('stopTimer');
+          this.showTimer = false;
           clearInterval(loop);
         }
       }, 1000);
@@ -36,6 +38,7 @@ export default {
       else{
         this.minutes = 1;
         this.seconds = 0;
+        this.showTimer = true;
       }
     }
   }
@@ -45,7 +48,7 @@ export default {
 
 <template>
   <div id="clock">
-    <p>{{ minutes }}:{{ seconds < 10 ? '0' + seconds : seconds }}</p>
+    <p v-if="showTimer">{{ minutes }}:{{ seconds < 10 ? '0' + seconds : seconds }}</p>
   </div>
 </template>
 
