@@ -11,6 +11,10 @@ export default {
       type: String,
       default: ""
     },
+    language:{
+      type: String,
+      default: "polish"
+    },
     index: {
       type: Number,
       default: 0
@@ -23,7 +27,7 @@ export default {
   data() {
     return {
       words: [],
-      wordsHelp: wordsBase,
+      wordsHelp: [],
       activeWords: [true],
       colorBoxes: ['white']
     }
@@ -43,6 +47,19 @@ export default {
     },
     selectedColor(color){
       return color == '#CC5E5E' ? '#CC5E5E' : '#999';
+    },
+    chooseLanguage(){
+      switch(this.language){
+        case "polish":
+          this.wordsHelp = wordsBase.polish;
+          break;
+        case "english":
+          this.wordsHelp = wordsBase.english;
+          break;
+        case "italian":
+          this.wordsHelp = wordsBase.italian;
+          break;
+      }
     }
   },
   watch: {
@@ -63,12 +80,20 @@ export default {
         this.colorBoxes.splice(0, this.colorBoxes.length);
         this.activeWords.splice(0, this.activeWords.length);
         this.activeWords[0] = true;
-        this.wordsHelp = wordsBase;
+        this.chooseLanguage();
+        this.fillArr(0);
+      }
+    },
+    language(){
+      if(this.activeWords[0]){
+        this.chooseLanguage();
+        this.words = [];
         this.fillArr(0);
       }
     }
   },
   mounted() {
+    this.chooseLanguage();
     this.fillArr(0);
   }
 }

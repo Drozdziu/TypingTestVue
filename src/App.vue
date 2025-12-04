@@ -17,13 +17,14 @@ export default {
   data() {
     return {
       checkWord: "",
+      language: "polish",
       index: 0,
       stopTyping: false,
       startTyping: false,
       goodWords: 0,
       wordCount: 0,
       accuracyPercent: 0,
-      resetTest: false
+      resetTest: true
     }
   },
   methods: {
@@ -49,15 +50,19 @@ export default {
       this.goodWords = 0;
       this.stopTyping = false;
       this.resetTest = true;
+    },
+    changeLanguage(lan){
+      this.language = lan;
+      console.log(lan)
     }
   }
 }
 </script>
 
 <template>
-  <HeaderComp/>
+  <HeaderComp @changeLanguage="changeLanguage"/>
   <div id="container">
-    <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" @zeroIndex="zeroIndex" @wordCounter="goodCounter"/>
+    <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" :language="language" @zeroIndex="zeroIndex" @wordCounter="goodCounter"/>
     <div id="userUI">
       <user-word-component @sendWord="sendWord" @restartTest="restartTest" @changeIndex="changeIndex" :stopTyping="stopTyping" :accuracy="accuracyPercent"/>
       <timer-comp @stopTimer="stopTimer" :startTimer="startTyping" />

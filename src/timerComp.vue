@@ -9,8 +9,8 @@ export default {
   },
   data() {
     return {
-      minutes: 1,
-      seconds: 0,
+      minutes: 0,
+      seconds: 30,
       showTimer: true
     }
   },
@@ -36,8 +36,8 @@ export default {
     startTimer() {
       if(this.startTimer) this.start();
       else{
-        this.minutes = 1;
-        this.seconds = 0;
+        this.minutes = 0;
+        this.seconds = 30;
         this.showTimer = true;
       }
     }
@@ -51,7 +51,9 @@ export default {
     <p v-if="showTimer">{{ minutes }}:{{ seconds < 10 ? '0' + seconds : seconds }}</p>
   </div>
 </template>
+<style>
 
+</style>
 <style scoped>
 #clock {
   background-color: #21FA91;

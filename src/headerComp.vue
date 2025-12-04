@@ -14,9 +14,9 @@ export default {
             <label class="form-check-label" for="flexSwitchCheckDefault">Dark mode</label>
         </div>
         <div>
-            <button><i class="fi fi-gb" /></button>
-            <button><i class="fi fi-pl" /></button>
-            <button><i class="fi fi-it" /></button>
+            <button @click="$emit('changeLanguage', 'english');"><i class="fi fi-gb" /></button>
+            <button @click="$emit('changeLanguage', 'polish');"><i class="fi fi-pl" /></button>
+            <button @click="$emit('changeLanguage', 'italian');"><i class="fi fi-it" /></button>
         </div>
     </header>
 </template>
