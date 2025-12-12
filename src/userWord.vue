@@ -42,27 +42,37 @@ export default {
 
 <template>
   <input v-if="!stopTyping" v-model="word" autofocus />
-  <div v-else>
-    <p> Test is over! </p>
-    <p> Your speed: {{ this.wpn }} WPN </p>
-    <p> Your accuracy: {{ this.accuracy.toFixed(0) }} % </p>
+  <div id="results" v-else>
+    <h3> Test is over! </h3>
+    <h3> Your speed: {{ this.wpn }} WPN </h3>
+    <h3> Your accuracy: {{ this.accuracy.toFixed(0) }} % </h3>
     <button @click="restartTest" type="button" class="btn btn-success">Restart</button>
   </div>
 </template>
 
+<style>
+  #results{
+    background-color: var(--BoxColor);
+  }
+  input{
+    background-color: var(--BoxColor);
+    color: var(--FontColor);
+  }
+  h3{
+    color: var(--FontColor);
+    margin: 10px;
+  }
+</style>
 <style scoped>
 input {
   margin-top: 30px;
-  background-color: white;
   border: 0;
   border-radius: 10px;
-  color: black;
   font-size: 30px;
   margin: 10px;
   padding: 5px;
 }
 button{
-  /* border: 5px solid black; */
   border-radius: 10px;
   font-size: 30px;
   background-color: #21FA91;
@@ -75,7 +85,6 @@ button:hover{
   transition-duration: 200ms;
 }
 p {
-  /* color: white; */
   margin: 10px;
   font-size: 30px;
 }

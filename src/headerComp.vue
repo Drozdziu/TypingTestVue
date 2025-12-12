@@ -1,7 +1,11 @@
-<script lang="ts">
-export default {
-    name: 'headerComp',
-}
+<script setup lang="ts">
+import { ref, watch } from 'vue';
+
+const darkTheme = ref(true);
+watch(darkTheme, (newValue)=>{
+    const root = document.documentElement;
+    newValue ?  root.removeAttribute('data-theme')  : root.setAttribute('data-theme', 'light');
+})
 </script>
 
 <template>
@@ -10,8 +14,8 @@ export default {
             <h1>Typing Test</h1>
         </div>
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Dark mode</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" v-model="darkTheme" checked>
+            <label class="form-check-label" for="flexSwitchCheckDefault">{{darkTheme ? "Dark Mode" : "Light Mode" }}</label>
         </div>
         <div>
             <button @click="$emit('changeLanguage', 'english');"><i class="fi fi-gb" /></button>
@@ -25,7 +29,9 @@ export default {
 div {
     padding: 10px;
 }
-
+label{
+    font-size: 20px;
+}
 .form-check {
     display: block;
 }
@@ -33,37 +39,13 @@ div {
 .form-check-input {
     float: right;
 }
-
 p {
     float: right;
 }
-label{
-    color: #21FA91;
-    font-size: large;
-}
-
-header {
-    background-color: #222;
-    width: 100%;
-    min-width: 545px;
-    padding: 10px;
-    color: white;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    box-shadow: 0 0 5px #000;
-}
-
 button {
     background-color: rgba(0, 0, 0, 0);
     border: 0;
 }
 
-h1 {
-    float: left;
-    color: #21FA91;
-}
 
-i {
-    width: 100px;
-}
 </style>

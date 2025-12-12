@@ -29,7 +29,7 @@ export default {
       words: [],
       wordsHelp: [],
       activeWords: [true],
-      colorBoxes: ['white']
+      colorBoxes: ['rgba(0, 0, 0, 0)']
     }
   },
   methods: {
@@ -68,7 +68,7 @@ export default {
       this.activeWords[this.index] = true;
       if (this.index % 5 == 0 && this.index != 0) {
         this.words.splice(0, 5);
-        for (let i in this.colorBoxes) this.colorBoxes[i] = "white";
+        for (let i in this.colorBoxes) this.colorBoxes[i] = "rgba(0, 0, 0, 0)";
         for (let i in this.activeWords) this.activeWords[i] = false;
         this.$emit('zeroIndex');
         this.fillArr(this.words.length);
@@ -109,20 +109,19 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style>
 #box {
   min-height: 100px;
   max-width: 600px;
   min-width: 450px;
-  background-color: white;
+  background-color: var(--BoxColor);
   border-radius: 10px;
-  color: #000;
+  color: var(--FontColor);
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
 }
-
 .row {
   display: grid;
   grid-template-columns: repeat(5, 2fr);

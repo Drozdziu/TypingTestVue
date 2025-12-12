@@ -31,7 +31,7 @@ export default {
           return "#FC2111";
         }
       }
-      else return "#FFF";
+      else return "rgba(0, 0, 0, 0)";
     }
   },
   watch: {
@@ -51,7 +51,6 @@ p {
   border-radius: 10px;
   margin: 5px;
   padding: 2px;
-  color: black;
   font-size: 100%;
 }
 </style>

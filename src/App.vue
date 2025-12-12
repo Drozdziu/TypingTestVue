@@ -36,16 +36,14 @@ export default {
       this.index++; 
       this.wordCount++; 
     },
-    zeroIndex(){ this.index = 0; },
     stopTimer(){ 
       this.stopTyping = true; 
       this.resetTest = false;
       this.accuracyPercent = (this.goodWords / this.wordCount) * 100;
     },
-    goodCounter(){ this.goodWords++; },
     restartTest(){
       this.startTyping = false;
-      this.zeroIndex()
+      this.index = 0;
       this.wordCount = 0;
       this.goodWords = 0;
       this.stopTyping = false;
@@ -53,7 +51,6 @@ export default {
     },
     changeLanguage(lan){
       this.language = lan;
-      console.log(lan)
     }
   }
 }
@@ -62,21 +59,10 @@ export default {
 <template>
   <HeaderComp @changeLanguage="changeLanguage"/>
   <div id="container">
-    <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" :language="language" @zeroIndex="zeroIndex" @wordCounter="goodCounter"/>
+    <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" :language="language" @zeroIndex="index = 0" @wordCounter="goodWords++"/>
     <div id="userUI">
       <user-word-component @sendWord="sendWord" @restartTest="restartTest" @changeIndex="changeIndex" :stopTyping="stopTyping" :accuracy="accuracyPercent"/>
       <timer-comp @stopTimer="stopTimer" :startTimer="startTyping" />
     </div>
   </div>
 </template>
-
-<style scoped>
-#container {
-  margin: 40px;
-  padding: 20px;
-}
-#userUI{
-  display: inline-flex;
-  align-items: flex-end;
-}
-</style>

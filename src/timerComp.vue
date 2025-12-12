@@ -9,8 +9,8 @@ export default {
   },
   data() {
     return {
-      minutes: 0,
-      seconds: 30,
+      minutes: 1,
+      seconds: 0,
       showTimer: true
     }
   },
@@ -36,8 +36,8 @@ export default {
     startTimer() {
       if(this.startTimer) this.start();
       else{
-        this.minutes = 0;
-        this.seconds = 30;
+        this.minutes = 1;
+        this.seconds = 0;
         this.showTimer = true;
       }
     }
@@ -54,14 +54,13 @@ export default {
 <style>
 
 </style>
-<style scoped>
+<style>
 #clock {
-  background-color: #21FA91;
+  background-color: var(--ColorStyle);
   border-radius: 10px;
   font-size: 30px;
   margin: 10px;
 }
-
 p {
   margin: 0;
   padding: 5px;
