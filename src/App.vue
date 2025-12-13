@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import SentenceComp from './sentenceComp.vue';
 import UserWordComponent from './userWord.vue';
 import WordComp from './wordComp.vue';
@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       checkWord: "",
-      language: "polish",
+      language: "english",
       index: 0,
       stopTyping: false,
       startTyping: false,
@@ -28,7 +28,7 @@ export default {
     }
   },
   methods: {
-    sendWord(word){ 
+    sendWord(word: string){ 
       this.checkWord = word; 
       this.startTyping = true;
     },
@@ -49,7 +49,7 @@ export default {
       this.stopTyping = false;
       this.resetTest = true;
     },
-    changeLanguage(lan){
+    changeLanguage(lan: string){
       this.language = lan;
     }
   }
@@ -61,7 +61,7 @@ export default {
   <div id="container">
     <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" :language="language" @zeroIndex="index = 0" @wordCounter="goodWords++"/>
     <div id="userUI">
-      <user-word-component @sendWord="sendWord" @restartTest="restartTest" @changeIndex="changeIndex" :stopTyping="stopTyping" :accuracy="accuracyPercent"/>
+      <user-word-component @sendWord="sendWord" @restartTest="restartTest" @changeIndex="changeIndex" :stopTyping="stopTyping" :accuracy="accuracyPercent" :lang="language"/>
       <timer-comp @stopTimer="stopTimer" :startTimer="startTyping" />
     </div>
   </div>

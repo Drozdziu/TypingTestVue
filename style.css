@@ -1,18 +1,20 @@
-:root{
+:root {
   --BGColor: #333;
   --HeaderColor: #222;
   --BoxColor: #FFF;
   --FontColor: #000;
-  --ColorStyle: #21FA91;
+  --ColorStyle: #21fa91;
 }
+
 :root[data-theme="light"] {
-    --BGColor: #FFF;
-    --HeaderColor: #EEE;
-    --BoxColor: #686868;
-    /* --FontColor: #FFF; */
-    --ColorStyle: #028545;
+  --BGColor: #FFF;
+  --HeaderColor: #EEE;
+  --BoxColor: #686868;
+  /* --FontColor: #FFF; */
+  --ColorStyle: #028545;
 
 }
+
 body {
   background-color: var(--BGColor);
   text-align: center;
@@ -20,37 +22,45 @@ body {
   margin-right: auto;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 header {
-    background-color: var(--HeaderColor);
-    width: 100%;
-    min-width: 545px;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    box-shadow: 0 0 5px #000;
+  background-color: var(--HeaderColor);
+  width: 100%;
+  min-width: 545px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0 0 5px #000;
 }
+
 h1 {
-    float: left;
-    color: var(--ColorStyle);
+  float: left;
+  color: var(--ColorStyle);
 }
+
 i {
-    width: 100px;
+  width: 100px;
 }
-label{
-    color: var(--ColorStyle);
-    font-size: large;
+
+label {
+  color: var(--ColorStyle);
+  font-size: large;
 }
-p{
+
+p {
   color: var(--FontColor);
 }
+
 #container {
   margin: 40px;
   padding: 20px;
 }
-#userUI{
+
+#userUI {
   display: inline-flex;
   align-items: flex-end;
 }
+
 .form-check-input:checked {
   background-color: var(--ColorStyle);
   border-color: var(--ColorStyle);
