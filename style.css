@@ -10,7 +10,6 @@
   --BGColor: #FFF;
   --HeaderColor: #EEE;
   --BoxColor: #686868;
-  /* --FontColor: #FFF; */
   --ColorStyle: #028545;
 
 }
@@ -64,4 +63,9 @@ p {
 .form-check-input:checked {
   background-color: var(--ColorStyle);
   border-color: var(--ColorStyle);
+}
+i{
+    border: 1px solid black;
+    border-radius: 20%;
+    background-color: #000;
 }

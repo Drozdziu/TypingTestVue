@@ -49,7 +49,6 @@ const changeLang = (l: string) => {
         </div>
     </header>
 </template>
-
 <style scoped>
 div {
     padding: 10px;
@@ -72,7 +71,8 @@ p {
 }
 
 button {
-    background-color: rgba(0, 0, 0, 0);
     border: 0;
+    background-color: rgba(0, 0, 0, 0);    
 }
+
 </style>

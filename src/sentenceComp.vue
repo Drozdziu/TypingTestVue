@@ -44,12 +44,18 @@ export default {
       if(this.colorBoxes[this.index-1] == '#CC5E5E') this.colorBoxes[this.index-1] = '#FC2111';
       if (color == "#21FA91") this.$emit('wordCounter');
     },
-    fillArr(_i : number) {
-      for (let i = _i; i < _i + 10; i++) {
-        let randIndex = Math.round(Math.random() * this.wordsHelp.length - 1);
-        if(this.words[i] !== null && this.wordsHelp[randIndex] !== undefined) this.words[i] = this.wordsHelp[randIndex];
-        this.wordsHelp.splice(randIndex, 1);
+    fillArr(_i : number, addNumber: number) {
+      if(_i + addNumber >= this.wordsHelp.length){
+        this.chooseLanguage();
       }
+      else{
+        for (let i = _i; i < _i + addNumber; i++) {
+          let randIndex = Math.round(Math.random() * this.wordsHelp.length - 1);
+          if(this.words[i] !== null && this.wordsHelp[randIndex] !== undefined) this.words[i] = this.wordsHelp[randIndex];
+          this.wordsHelp.splice(randIndex, 1);
+        }
+      }
+
     },
     selectedColor(color : string){
       return color == '#CC5E5E' ? '#CC5E5E' : '#999';
@@ -77,7 +83,7 @@ export default {
         for (let i in this.colorBoxes) this.colorBoxes[i] = "rgba(0, 0, 0, 0)";
         for (let i in this.activeWords) this.activeWords[i] = false;
         this.$emit('zeroIndex');
-        this.fillArr(this.words.length);
+        this.fillArr(this.words.length, 5);
       }
     },
     reset(){
@@ -87,20 +93,20 @@ export default {
         this.activeWords.splice(0, this.activeWords.length);
         this.activeWords[0] = true;
         this.chooseLanguage();
-        this.fillArr(0);
+        this.fillArr(0, 10);
       }
     },
     language(){
       if(this.activeWords[0]){
         this.chooseLanguage();
         this.words = [];
-        this.fillArr(0);
+        this.fillArr(0, 10);
       }
     }
   },
   mounted() {
     this.chooseLanguage();
-    this.fillArr(0);
+    this.fillArr(0, 10);
   }
 }
 </script>

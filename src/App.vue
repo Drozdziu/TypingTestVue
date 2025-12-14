@@ -62,7 +62,7 @@ export default {
     <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" :language="language" @zeroIndex="index = 0" @wordCounter="goodWords++"/>
     <div id="userUI">
       <user-word-component @sendWord="sendWord" @restartTest="restartTest" @changeIndex="changeIndex" :stopTyping="stopTyping" :accuracy="accuracyPercent" :lang="language"/>
-      <timer-comp @stopTimer="stopTimer" :startTimer="startTyping" />
+      <timer-comp @stopTimer="stopTimer" :startTimer="startTyping" :lang="language" />
     </div>
   </div>
 </template>
