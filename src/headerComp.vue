@@ -60,6 +60,8 @@ label {
 
 .form-check {
     display: block;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .form-check-input {

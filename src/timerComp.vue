@@ -72,26 +72,32 @@ export default {
       if (this.timer == 0) {
         this.minutes = 0;
         this.seconds = 15;
+        this.$emit("setMin", 0.25);
       }
       if (this.timer == 1) {
         this.minutes = 0;
         this.seconds = 30;
+        this.$emit("setMin", 0.5);
       }
       if (this.timer == 2) {
         this.minutes = 0;
         this.seconds = 45;
+        this.$emit("setMin", 0.75);
       }
       if (this.timer == 3) {
         this.minutes = 1;
         this.seconds = 0;
+        this.$emit("setMin", 1);
       }
       if (this.timer == 4) {
         this.minutes = 1;
         this.seconds = 30;
+        this.$emit("setMin", 1.5);
       }
       if (this.timer == 5) {
         this.minutes = 2;
         this.seconds = 0;
+        this.$emit("setMin", 2);
       }
     }
   }

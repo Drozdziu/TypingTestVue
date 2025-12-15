@@ -44,18 +44,12 @@ export default {
       if(this.colorBoxes[this.index-1] == '#CC5E5E') this.colorBoxes[this.index-1] = '#FC2111';
       if (color == "#21FA91") this.$emit('wordCounter');
     },
-    fillArr(_i : number, addNumber: number) {
-      if(_i + addNumber >= this.wordsHelp.length){
-        this.chooseLanguage();
-      }
-      else{
+    fillArr(_i : number, addNumber: number) { 
         for (let i = _i; i < _i + addNumber; i++) {
-          let randIndex = Math.round(Math.random() * this.wordsHelp.length - 1);
+          let randIndex = Math.round(Math.random() * this.wordsHelp.length);
           if(this.words[i] !== null && this.wordsHelp[randIndex] !== undefined) this.words[i] = this.wordsHelp[randIndex];
           this.wordsHelp.splice(randIndex, 1);
         }
-      }
-
     },
     selectedColor(color : string){
       return color == '#CC5E5E' ? '#CC5E5E' : '#999';
@@ -102,7 +96,7 @@ export default {
         this.words = [];
         this.fillArr(0, 10);
       }
-    }
+    },
   },
   mounted() {
     this.chooseLanguage();
@@ -125,7 +119,7 @@ export default {
 #box {
   min-height: 100px;
   max-width: 600px;
-  min-width: 450px;
+  min-width: 540px;
   background-color: var(--BoxColor);
   border-radius: 10px;
   color: var(--FontColor);

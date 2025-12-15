@@ -4,7 +4,11 @@ export default {
   props: {
     stopTyping: Boolean,
     accuracy: Number,
-    lang: String
+    lang: String,
+    minutes: {
+      type: Number,
+      default: 1
+    }
   },
   data() {
     return {
@@ -25,6 +29,7 @@ export default {
   },
   watch: {
     word() {
+      if (this.word == ' ') this.word = this.word.trim();
       this.$emit('sendWord', this.word);
       if (this.word.includes(' ')) {
         this.signsCount += this.word.length - 1;
@@ -34,7 +39,7 @@ export default {
     },
     stopTyping() {
       if (this.stopTyping) {
-        this.wpn = this.signsCount / 5;
+        this.wpn = (this.signsCount / 5) * this.minutes;
         this.word = '';
       }
     },
@@ -70,13 +75,15 @@ export default {
     <h3> {{ finalWords[0] }} </h3>
     <h3> {{ finalWords[1] }}{{ wpn }} WPN </h3>
     <h3> {{ finalWords[2] }} {{ accuracy?.toFixed(0) }} % </h3>
-    <button @click="restartTest" type="button" class="btn btn-success">{{finalWords[3]}}</button>
+    <button @click="restartTest" type="button" class="btn btn-success">{{ finalWords[3] }}</button>
   </div>
 </template>
 
 <style>
 #results {
   background-color: var(--BoxColor);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input {
@@ -97,6 +104,8 @@ input {
   font-size: 30px;
   margin: 10px;
   padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button {

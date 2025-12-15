@@ -24,7 +24,8 @@ export default {
       goodWords: 0,
       wordCount: 0,
       accuracyPercent: 0,
-      resetTest: true
+      resetTest: true,
+      min: 1,
     }
   },
   methods: {
@@ -61,8 +62,8 @@ export default {
   <div id="container">
     <sentence-comp :checkWord="checkWord" :index="index" :reset="resetTest" :language="language" @zeroIndex="index = 0" @wordCounter="goodWords++"/>
     <div id="userUI">
-      <user-word-component @sendWord="sendWord" @restartTest="restartTest" @changeIndex="changeIndex" :stopTyping="stopTyping" :accuracy="accuracyPercent" :lang="language"/>
-      <timer-comp @stopTimer="stopTimer" :startTimer="startTyping" :lang="language" />
+      <user-word-component @sendWord="sendWord" @restartTest="restartTest" @changeIndex="changeIndex" :stopTyping="stopTyping" :accuracy="accuracyPercent" :lang="language" :minutes="min"/>
+      <timer-comp @stopTimer="stopTimer" @setMin="min" :startTimer="startTyping" :lang="language" />
     </div>
   </div>
 </template>

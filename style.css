@@ -25,7 +25,7 @@ body {
 header {
   background-color: var(--HeaderColor);
   width: 100%;
-  min-width: 545px;
+  min-width: 620px;
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
